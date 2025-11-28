@@ -20,5 +20,14 @@ namespace UtulekSpoluprace
                 .Where(z => z.Name.IndexOf(namePart, StringComparison.OrdinalIgnoreCase) >= 0)
                 .ToArray();
         }
+
+        public void ToggleAdopce(string jmeno)
+        {
+            var zvire = data.ZvireList.FirstOrDefault(z => z.Name.Equals(jmeno, StringComparison.OrdinalIgnoreCase));
+            if (zvire != null)
+                zvire.AdoptedToggle();
+            else
+                Console.WriteLine("Zvíře nenalezeno.");
+        }
     }
 }
