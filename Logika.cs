@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace UtulekSpoluprace
+namespace SpolupraceNaUtulkuProZviratka
 {
     public class Logika
     {
