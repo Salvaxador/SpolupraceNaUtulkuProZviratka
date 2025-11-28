@@ -29,5 +29,16 @@ namespace UtulekSpoluprace
             else
                 Console.WriteLine("Zvíře nenalezeno.");
         }
+
+        public Zvire[] Vyhledat(string name, string druh, bool? adopted, int? minAge, int? maxAge)
+        {
+            return data.ZvireList.Where(z =>
+                (string.IsNullOrEmpty(name) || z.Name.Contains(name, StringComparison.OrdinalIgnoreCase)) &&
+                (string.IsNullOrEmpty(druh) || z.AnimalType.Contains(druh, StringComparison.OrdinalIgnoreCase)) &&
+                (!adopted.HasValue || z.Adopted == adopted.Value) &&
+                (!minAge.HasValue || z.Age >= minAge.Value) &&
+                (!maxAge.HasValue || z.Age <= maxAge.Value)
+            ).ToArray();
+        }
     }
 }
